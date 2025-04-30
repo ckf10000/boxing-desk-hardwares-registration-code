@@ -65,6 +65,7 @@ func (h *HardwareInfo) getDiskVolumeSerialNumber() string {
 	}
 	volumeSerialNumberSlice := strings.Split(string(outByte), diskDeviceId)
 	if len(volumeSerialNumberSlice) != 2 {
+		log.Println("获取 C盘的卷序列号（VolumeSerialNumber）:\n", string(outByte))
 		return "00000000"
 	}
 	return strings.TrimSpace(volumeSerialNumberSlice[1])
