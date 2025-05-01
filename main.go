@@ -10,11 +10,13 @@
 package main
 
 import (
+	"bufio"
 	"crypto/sha1"
 	"encoding/hex"
 	"fmt"
 	"log"
 	"math/rand/v2"
+	"os"
 	"os/exec"
 	"strings"
 	"time"
@@ -36,6 +38,14 @@ func main() {
 	// 生成并打印注册码
 	rNum := hardware.getRNum()
 	fmt.Printf("注册码: %s\n", rNum)
+
+	// 更专业的实现方式
+	fmt.Print("\n按任意键退出...")
+	reader := bufio.NewReader(os.Stdin)
+	_, _, err := reader.ReadRune()
+	if err != nil {
+		return
+	} // 等待单个字符输入
 }
 
 func NewHardwareInfo() *HardwareInfo {
